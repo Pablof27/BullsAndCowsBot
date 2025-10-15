@@ -9,7 +9,7 @@ class NumberGuesser:
         self.possible_numbers = self.generate_numbers(n)
 
     def generate_numbers(self, n):
-        digits = '0123456789'
+        digits = '123456789'
 
         result = []
         for digit_combo in combinations(digits, n):
@@ -66,7 +66,8 @@ class NumberGuesser:
 
 if __name__ == "__main__":
     attempts = []
-    for i in range(1000):
+    reps = 1000
+    for i in range(reps):
         ng = NumberGuesser(4)
         number = choice(list(ng.numbers))
         print(f"Number to guess (for testing): {number}")
@@ -77,7 +78,7 @@ if __name__ == "__main__":
             # Simulate feedback
             pattern = ng.get_pattern(guess, number)
             print(f"Pattern for guess {guess} against number {number}: {pattern}")
-            input("Press Enter to continue...")
+            # input("Press Enter to continue...")
             if pattern == (0, ng.n):
                 print("Guessed the number!")
                 print()
@@ -86,4 +87,4 @@ if __name__ == "__main__":
             guess = ng.make_new_guess()
             count += 1
         attempts.append(count)
-    print(f"Average attempts over 1000 games: {np.mean(attempts)}")
+    print(f"Average attempts over {reps} games: {np.mean(attempts)}")
