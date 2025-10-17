@@ -5,10 +5,11 @@ from random import choice
 class NumberGuesser:
     def __init__(self, n=4):
         self.n = n
-        self.numbers = self.generate_numbers(n)
+        self.numbers = NumberGuesser.generate_numbers(n)
         self.possible_numbers = self.generate_numbers(n)
 
-    def generate_numbers(self, n):
+    @staticmethod
+    def generate_numbers(n):
         digits = '123456789'
 
         result = []
@@ -17,6 +18,10 @@ class NumberGuesser:
                 result.append(''.join(perm))
 
         return np.array(result)
+
+    @staticmethod
+    def make_choice(n=4):
+        return choice(NumberGuesser.generate_numbers(n))
 
     def make_new_guess(self):
         if len(self.possible_numbers) == 0:
@@ -51,7 +56,7 @@ class NumberGuesser:
 
         pattern_counts = np.zeros((self.n + 1, self.n + 1), dtype=int)
         for number in self.possible_numbers:
-            i, j = self.get_pattern(guess, number)
+            i, j = NumberGuesser.get_pattern(guess, number)
             pattern_counts[i, j] += 1
 
         probabilities = pattern_counts / len(self.possible_numbers)
@@ -59,7 +64,8 @@ class NumberGuesser:
         
         return entropy
 
-    def get_pattern(self, guess, number):
+    @staticmethod
+    def get_pattern(guess, number):
         correct_position = sum(g == n for g, n in zip(guess, number))
         correct_digit = sum(1 if d in number else 0 for d in guess)
         return correct_digit - correct_position, correct_position
@@ -76,7 +82,7 @@ if __name__ == "__main__":
         while guess is not None:
             print(f"New guess: {guess}")
             # Simulate feedback
-            pattern = ng.get_pattern(guess, number)
+            pattern = NumberGuesser.get_pattern(guess, number)
             print(f"Pattern for guess {guess} against number {number}: {pattern}")
             # input("Press Enter to continue...")
             if pattern == (0, ng.n):
