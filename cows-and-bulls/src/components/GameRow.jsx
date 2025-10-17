@@ -1,7 +1,7 @@
 
 export default function GameRow() {
     return (
-        <div className="Row">
+        <div className="row">
             <InputRow />
             <ResultRow bulls={0} cows={0} />
         </div>
@@ -10,7 +10,7 @@ export default function GameRow() {
 
 function InputBox() {
     return (
-        <div className="Box">
+        <div className="box">
             <input type="text" maxLength="1" />
         </div>
     )
@@ -18,7 +18,7 @@ function InputBox() {
 
 function InputRow() {
     return (
-        <div className="InputRow">
+        <div className="inputRow">
             <InputBox />
             <InputBox />
             <InputBox />
@@ -29,7 +29,7 @@ function InputRow() {
 
 function ResultBox({ value }) {
     return (
-        <div className="Box">
+        <div className="box">
             <label>{value}</label>
         </div>
     )
@@ -37,7 +37,7 @@ function ResultBox({ value }) {
 
 function ResultRow({ bulls, cows }) {
     return (
-        <div className="ResultRow">
+        <div className="resultRow">
             <ResultBox value={bulls} />
             <ResultBox value={cows} />
         </div>
