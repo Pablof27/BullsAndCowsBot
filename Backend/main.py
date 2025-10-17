@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
-from logic import NumberGuesser
+from backend.logic import NumberGuesser
 
 class GuessRequest(BaseModel):
     guess: int
