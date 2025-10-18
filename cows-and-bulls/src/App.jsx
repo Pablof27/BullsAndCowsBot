@@ -1,14 +1,9 @@
-import GameRow from "./components/GameRow"
+import InputGrid from "./components/InputGrid"
 
 function App() {
   return (
     <>
-      <GameRow />
-      <GameRow />
-      <GameRow />
-      <GameRow />
-      <GameRow />
-      <GameRow />
+      <InputGrid />
     </>
   )
 }
