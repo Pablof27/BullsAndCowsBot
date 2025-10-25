@@ -13,6 +13,20 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.body {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.game {
+  display: flex;
+  gap: 32px;
+  padding: 32px;
+  justify-content: center;
+  align-items: center;
+}
+
 .grid {
   display: flex;
   flex-direction: column;
